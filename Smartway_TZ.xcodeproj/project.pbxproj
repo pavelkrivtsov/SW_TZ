@@ -11,6 +11,8 @@
 		90AEF2862A5C5B2900682E86 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AEF2852A5C5B2900682E86 /* ContentView.swift */; };
 		90AEF2882A5C5B2B00682E86 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 90AEF2872A5C5B2B00682E86 /* Assets.xcassets */; };
 		90AEF28B2A5C5B2B00682E86 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 90AEF28A2A5C5B2B00682E86 /* Preview Assets.xcassets */; };
+		90AEF2962A5C6E6C00682E86 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AEF2952A5C6E6C00682E86 /* ContentViewModel.swift */; };
+		90AEF2982A5C6E7B00682E86 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AEF2972A5C6E7B00682E86 /* Models.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +21,8 @@
 		90AEF2852A5C5B2900682E86 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		90AEF2872A5C5B2B00682E86 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		90AEF28A2A5C5B2B00682E86 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		90AEF2952A5C6E6C00682E86 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
+		90AEF2972A5C6E7B00682E86 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +85,7 @@
 		90AEF2922A5C5C2800682E86 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				90AEF2952A5C6E6C00682E86 /* ContentViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -88,6 +93,7 @@
 		90AEF2932A5C5C2E00682E86 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				90AEF2972A5C6E7B00682E86 /* Models.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -171,6 +177,8 @@
 			files = (
 				90AEF2862A5C5B2900682E86 /* ContentView.swift in Sources */,
 				90AEF2842A5C5B2900682E86 /* Smartway_TZApp.swift in Sources */,
+				90AEF2962A5C6E6C00682E86 /* ContentViewModel.swift in Sources */,
+				90AEF2982A5C6E7B00682E86 /* Models.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
