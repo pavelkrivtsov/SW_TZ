@@ -13,6 +13,9 @@
 		90AEF28B2A5C5B2B00682E86 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 90AEF28A2A5C5B2B00682E86 /* Preview Assets.xcassets */; };
 		90AEF2962A5C6E6C00682E86 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AEF2952A5C6E6C00682E86 /* ContentViewModel.swift */; };
 		90AEF2982A5C6E7B00682E86 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AEF2972A5C6E7B00682E86 /* Models.swift */; };
+		90AEF29A2A5C6F4A00682E86 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AEF2992A5C6F4A00682E86 /* NetworkService.swift */; };
+		90AEF29C2A5C7FBB00682E86 /* NetworkResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AEF29B2A5C7FBB00682E86 /* NetworkResponse.swift */; };
+		90AEF29E2A5C803200682E86 /* NetworkServiceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AEF29D2A5C803200682E86 /* NetworkServiceDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +26,9 @@
 		90AEF28A2A5C5B2B00682E86 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		90AEF2952A5C6E6C00682E86 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
 		90AEF2972A5C6E7B00682E86 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		90AEF2992A5C6F4A00682E86 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		90AEF29B2A5C7FBB00682E86 /* NetworkResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResponse.swift; sourceTree = "<group>"; };
+		90AEF29D2A5C803200682E86 /* NetworkServiceDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +107,9 @@
 		90AEF2942A5C5C3200682E86 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				90AEF2992A5C6F4A00682E86 /* NetworkService.swift */,
+				90AEF29D2A5C803200682E86 /* NetworkServiceDelegate.swift */,
+				90AEF29B2A5C7FBB00682E86 /* NetworkResponse.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -175,10 +184,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				90AEF29A2A5C6F4A00682E86 /* NetworkService.swift in Sources */,
+				90AEF29E2A5C803200682E86 /* NetworkServiceDelegate.swift in Sources */,
 				90AEF2862A5C5B2900682E86 /* ContentView.swift in Sources */,
 				90AEF2842A5C5B2900682E86 /* Smartway_TZApp.swift in Sources */,
 				90AEF2962A5C6E6C00682E86 /* ContentViewModel.swift in Sources */,
 				90AEF2982A5C6E7B00682E86 /* Models.swift in Sources */,
+				90AEF29C2A5C7FBB00682E86 /* NetworkResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

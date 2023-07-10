@@ -11,7 +11,9 @@ import SwiftUI
 struct Smartway_TZApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            let networkService = NetworkService()
+            let viewModel = ContentViewModel(networkService: networkService)
+            ContentView(viewModel: viewModel)
         }
     }
 }
