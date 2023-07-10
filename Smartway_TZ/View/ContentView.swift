@@ -12,15 +12,25 @@ struct ContentView: View {
     @ObservedObject var viewModel: ContentViewModel
     
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        NavigationView {
+            List {
+                listSection
+            }.navigationTitle("Unsplash API")
         }
-        .padding()
     }
 }
+
+extension ContentView {
+    
+    private var listSection: some View {
+        Section {
+            ForEach(viewModel.items) { item in
+                ListRow(item: item)
+            }
+        }
+    }
+}
+
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {

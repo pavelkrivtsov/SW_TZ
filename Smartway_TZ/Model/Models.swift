@@ -8,7 +8,7 @@
 import Foundation
 
 // MARK: - Photo
-struct Photo: Decodable, Hashable {
+struct Photo: Decodable, Identifiable {
     let id: String
     let createdAt: String
     let width: Int
@@ -24,7 +24,7 @@ struct Photo: Decodable, Hashable {
 }
 
 // MARK: - Urls
-struct Urls: Decodable, Hashable {
+struct Urls: Decodable {
     let raw: String
     let full: String
     let regular: String
