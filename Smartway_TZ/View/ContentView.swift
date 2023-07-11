@@ -6,40 +6,17 @@
 //
 
 import SwiftUI
-import Kingfisher
 
 struct ContentView: View {
     
     @ObservedObject var viewModel: ContentViewModel
     
     var body: some View {
-        ScrollView {
-            listSection
+        ScrollView(showsIndicators: false) {
+            CustomGrid(items: viewModel.items)
         }
     }
 }
-
-extension ContentView {
-    
-    private var listSection: some View {
-        Section {
-            ForEach(viewModel.items) { item in
-                let processor = DownsamplingImageProcessor(size: .init(width: item.width, height: item.height))
-                
-                KFImage.url(URL(string: item.urls.small))
-                    .placeholder { Image("placeholderImage") }
-                    .setProcessor(processor)
-                    .loadDiskFileSynchronously()
-                    .cacheMemoryOnly()
-                    .fade(duration: 0.25)
-                    .onProgress { receivedSize, totalSize in  }
-                    .onSuccess { result in  }
-                    .onFailure { error in }
-            }
-        }
-    }
-}
-
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
