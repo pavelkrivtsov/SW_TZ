@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		900B00812A5DA8E7003F4D0B /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 900B00802A5DA8E7003F4D0B /* Kingfisher */; };
 		90AEF2842A5C5B2900682E86 /* Smartway_TZApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AEF2832A5C5B2900682E86 /* Smartway_TZApp.swift */; };
 		90AEF2862A5C5B2900682E86 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AEF2852A5C5B2900682E86 /* ContentView.swift */; };
 		90AEF2882A5C5B2B00682E86 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 90AEF2872A5C5B2B00682E86 /* Assets.xcassets */; };
@@ -16,7 +17,6 @@
 		90AEF29A2A5C6F4A00682E86 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AEF2992A5C6F4A00682E86 /* NetworkService.swift */; };
 		90AEF29C2A5C7FBB00682E86 /* NetworkResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AEF29B2A5C7FBB00682E86 /* NetworkResponse.swift */; };
 		90AEF29E2A5C803200682E86 /* NetworkServiceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AEF29D2A5C803200682E86 /* NetworkServiceDelegate.swift */; };
-		90AEF2A22A5C861400682E86 /* ListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AEF2A12A5C861400682E86 /* ListRow.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,7 +30,6 @@
 		90AEF2992A5C6F4A00682E86 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		90AEF29B2A5C7FBB00682E86 /* NetworkResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResponse.swift; sourceTree = "<group>"; };
 		90AEF29D2A5C803200682E86 /* NetworkServiceDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceDelegate.swift; sourceTree = "<group>"; };
-		90AEF2A12A5C861400682E86 /* ListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,6 +37,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				900B00812A5DA8E7003F4D0B /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,7 +86,6 @@
 			isa = PBXGroup;
 			children = (
 				90AEF2852A5C5B2900682E86 /* ContentView.swift */,
-				90AEF2A12A5C861400682E86 /* ListRow.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -133,6 +132,9 @@
 			dependencies = (
 			);
 			name = Smartway_TZ;
+			packageProductDependencies = (
+				900B00802A5DA8E7003F4D0B /* Kingfisher */,
+			);
 			productName = Smartway_TZ;
 			productReference = 90AEF2802A5C5B2900682E86 /* Smartway_TZ.app */;
 			productType = "com.apple.product-type.application";
@@ -161,6 +163,9 @@
 				Base,
 			);
 			mainGroup = 90AEF2772A5C5B2900682E86;
+			packageReferences = (
+				900B007F2A5DA8E6003F4D0B /* XCRemoteSwiftPackageReference "Kingfisher" */,
+			);
 			productRefGroup = 90AEF2812A5C5B2900682E86 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -191,7 +196,6 @@
 				90AEF29E2A5C803200682E86 /* NetworkServiceDelegate.swift in Sources */,
 				90AEF2862A5C5B2900682E86 /* ContentView.swift in Sources */,
 				90AEF2842A5C5B2900682E86 /* Smartway_TZApp.swift in Sources */,
-				90AEF2A22A5C861400682E86 /* ListRow.swift in Sources */,
 				90AEF2962A5C6E6C00682E86 /* ContentViewModel.swift in Sources */,
 				90AEF2982A5C6E7B00682E86 /* Models.swift in Sources */,
 				90AEF29C2A5C7FBB00682E86 /* NetworkResponse.swift in Sources */,
@@ -403,6 +407,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		900B007F2A5DA8E6003F4D0B /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		900B00802A5DA8E7003F4D0B /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 900B007F2A5DA8E6003F4D0B /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 90AEF2782A5C5B2900682E86 /* Project object */;
 }

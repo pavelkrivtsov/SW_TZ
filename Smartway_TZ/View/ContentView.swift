@@ -6,16 +6,15 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct ContentView: View {
     
     @ObservedObject var viewModel: ContentViewModel
     
     var body: some View {
-        NavigationView {
-            List {
-                listSection
-            }.navigationTitle("Unsplash API")
+        ScrollView {
+            listSection
         }
     }
 }
@@ -25,7 +24,17 @@ extension ContentView {
     private var listSection: some View {
         Section {
             ForEach(viewModel.items) { item in
-                ListRow(item: item)
+                let processor = DownsamplingImageProcessor(size: .init(width: item.width, height: item.height))
+                
+                KFImage.url(URL(string: item.urls.small))
+                    .placeholder { Image("placeholderImage") }
+                    .setProcessor(processor)
+                    .loadDiskFileSynchronously()
+                    .cacheMemoryOnly()
+                    .fade(duration: 0.25)
+                    .onProgress { receivedSize, totalSize in  }
+                    .onSuccess { result in  }
+                    .onFailure { error in }
             }
         }
     }
@@ -34,6 +43,6 @@ extension ContentView {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(viewModel: ContentViewModel(networkService: NetworkService() ))
+        ContentView(viewModel: ContentViewModel(networkService: NetworkService()))
     }
 }
