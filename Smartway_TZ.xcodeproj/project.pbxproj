@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		900B00812A5DA8E7003F4D0B /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 900B00802A5DA8E7003F4D0B /* Kingfisher */; };
-		900B00832A5DC8C6003F4D0B /* CustomGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900B00822A5DC8C6003F4D0B /* CustomGrid.swift */; };
 		90592F402A5EFACA00C00DDF /* ScrollViewLoader in Frameworks */ = {isa = PBXBuildFile; productRef = 90592F3F2A5EFACA00C00DDF /* ScrollViewLoader */; };
 		90592F422A5EFD3600C00DDF /* ImageDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90592F412A5EFD3600C00DDF /* ImageDetailView.swift */; };
 		90AEF2842A5C5B2900682E86 /* Smartway_TZApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AEF2832A5C5B2900682E86 /* Smartway_TZApp.swift */; };
@@ -23,7 +22,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		900B00822A5DC8C6003F4D0B /* CustomGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomGrid.swift; sourceTree = "<group>"; };
 		90592F412A5EFD3600C00DDF /* ImageDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDetailView.swift; sourceTree = "<group>"; };
 		90AEF2802A5C5B2900682E86 /* Smartway_TZ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Smartway_TZ.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		90AEF2832A5C5B2900682E86 /* Smartway_TZApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Smartway_TZApp.swift; sourceTree = "<group>"; };
@@ -92,7 +90,6 @@
 			isa = PBXGroup;
 			children = (
 				90AEF2852A5C5B2900682E86 /* ContentView.swift */,
-				900B00822A5DC8C6003F4D0B /* CustomGrid.swift */,
 				90592F412A5EFD3600C00DDF /* ImageDetailView.swift */,
 			);
 			path = View;
@@ -207,7 +204,6 @@
 				90AEF29E2A5C803200682E86 /* NetworkServiceDelegate.swift in Sources */,
 				90AEF2862A5C5B2900682E86 /* ContentView.swift in Sources */,
 				90AEF2842A5C5B2900682E86 /* Smartway_TZApp.swift in Sources */,
-				900B00832A5DC8C6003F4D0B /* CustomGrid.swift in Sources */,
 				90AEF2962A5C6E6C00682E86 /* ContentViewModel.swift in Sources */,
 				90AEF2982A5C6E7B00682E86 /* Models.swift in Sources */,
 				90AEF29C2A5C7FBB00682E86 /* NetworkResponse.swift in Sources */,
