@@ -32,7 +32,7 @@ final class NetworkService {
 
 extension NetworkService: NetworkServiceDelegate {
     
-    func getData() -> Future<[Photo], NetworkResponse> {
+    func getData(_ page: Int) -> Future<[Photo], NetworkResponse> {
         
         return Future { promise in
             
@@ -40,7 +40,8 @@ extension NetworkService: NetworkServiceDelegate {
             urlComponents.scheme = "https"
             urlComponents.host = "api.unsplash.com"
             urlComponents.path = "/photos"
-            urlComponents.queryItems = [URLQueryItem(name: "per_page", value: "30"),
+            urlComponents.queryItems = [URLQueryItem(name: "page", value: "\(page)"),
+                                        URLQueryItem(name: "per_page", value: "30"),
                                         URLQueryItem(name: "order_by", value: "popular")]
             
             guard let url = urlComponents.url,

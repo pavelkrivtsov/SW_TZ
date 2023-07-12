@@ -11,6 +11,7 @@ import Combine
 final class ContentViewModel: ObservableObject {
     
     @Published var items: [Photo] = []
+    private var page: Int = 0
     private var cancellable = Set<AnyCancellable>()
     private let networkService: NetworkServiceDelegate
     
@@ -19,8 +20,8 @@ final class ContentViewModel: ObservableObject {
         getData()
     }
     
-    private func getData() {
-        networkService.getData()
+    func getData() {
+        networkService.getData(page)
             .sink { completion in
                 switch completion {
                 case .finished:
@@ -29,8 +30,8 @@ final class ContentViewModel: ObservableObject {
                     print("error, \(error )")
                 }
             } receiveValue: { [weak self] response in
-                self?.items = response
-                print(self?.items)
+                self?.items.append(contentsOf: response)
+                self?.page += 1
             }
             .store(in: &cancellable)
     }

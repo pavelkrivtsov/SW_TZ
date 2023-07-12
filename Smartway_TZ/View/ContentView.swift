@@ -6,14 +6,17 @@
 //
 
 import SwiftUI
+import ScrollViewLoader
 
 struct ContentView: View {
     
     @ObservedObject var viewModel: ContentViewModel
     
     var body: some View {
-        ScrollView(showsIndicators: false) {
+        ScrollView(.vertical, showsIndicators: false) {
             CustomGrid(items: viewModel.items)
+        }.shouldLoadMore {
+            viewModel.getData()
         }
     }
 }

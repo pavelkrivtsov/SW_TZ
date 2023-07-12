@@ -11,15 +11,11 @@ import Kingfisher
 struct CustomGrid: View {
     
     private var items: [Photo]
-    private var spacing: CGFloat
-    private var horizontalPadding: CGFloat
+    private var spacing: CGFloat = 8
+    private var horizontalPadding: CGFloat = 8
     
-    init(items: [Photo],
-         spacing: CGFloat = 8,
-         horizontalPadding: CGFloat = 8) {
+    init(items: [Photo]) {
         self.items = items
-        self.spacing = spacing
-        self.horizontalPadding = horizontalPadding
     }
     
     var body: some View {
@@ -39,16 +35,14 @@ struct CustomGrid: View {
     }
     
     private func getItemView(item: Photo) -> some View {
-        KFImage.url(URL(string: item.urls.regular))
-            .placeholder { Image("placeholderImage") }
+        KFImage.url(URL(string: item.urls.small))
             .loadDiskFileSynchronously()
             .cacheMemoryOnly()
             .fade(duration: 0.25)
-            .onProgress { receivedSize, totalSize in  }
-            .onSuccess { result in }
-            .onFailure { error in }
             .resizable()
+            .aspectRatio(contentMode: .fit)
             .scaledToFit()
+            .cornerRadius(spacing)
     }
 }
 
