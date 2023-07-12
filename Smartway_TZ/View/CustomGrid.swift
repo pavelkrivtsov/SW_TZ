@@ -22,12 +22,16 @@ struct CustomGrid: View {
         HStack(alignment: .top, spacing: spacing) {
             VStack {
                 ForEach(self.items.prefix(self.items.count / 2), id: \.id) { item in
-                    getItemView(item: item)
+                    NavigationLink(destination: ImageDetailView(urlString: item.urls.regular)) {
+                        getItemView(item: item)
+                    }
                 }
             }
             VStack {
                 ForEach(self.items.suffix(self.items.count / 2), id: \.id) { item in
-                    getItemView(item: item)
+                    NavigationLink(destination: ImageDetailView(urlString: item.urls.regular)) {
+                        getItemView(item: item)
+                    }
                 }
             }
         }
@@ -40,7 +44,6 @@ struct CustomGrid: View {
             .cacheMemoryOnly()
             .fade(duration: 0.25)
             .resizable()
-            .aspectRatio(contentMode: .fit)
             .scaledToFit()
             .cornerRadius(spacing)
     }

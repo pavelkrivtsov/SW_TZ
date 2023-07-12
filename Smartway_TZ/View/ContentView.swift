@@ -13,10 +13,12 @@ struct ContentView: View {
     @ObservedObject var viewModel: ContentViewModel
     
     var body: some View {
-        ScrollView(.vertical, showsIndicators: false) {
-            CustomGrid(items: viewModel.items)
-        }.shouldLoadMore {
-            viewModel.getData()
+        NavigationView {
+            ScrollView(.vertical, showsIndicators: false) {
+                CustomGrid(items: viewModel.items)
+            }.shouldLoadMore {
+                viewModel.getData()
+            }
         }
     }
 }
