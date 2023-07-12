@@ -7,18 +7,37 @@
 
 import SwiftUI
 import ScrollViewLoader
+import Kingfisher
 
 struct ContentView: View {
     
     @ObservedObject var viewModel: ContentViewModel
+    private let constant: CGFloat = 8
+    private let gridItems = [
+        GridItem(.flexible()),
+        GridItem(.flexible())
+    ]
     
     var body: some View {
         NavigationView {
             ScrollView(.vertical, showsIndicators: false) {
-                CustomGrid(items: viewModel.items)
+                LazyVGrid(columns: gridItems) {
+                    ForEach(viewModel.items, id: \.id) { item in
+                        NavigationLink(destination: ImageDetailView(urlString: item.urls.regular)) {
+                            KFImage.url(URL(string: item.urls.small))
+                                .loadDiskFileSynchronously()
+                                .cacheMemoryOnly()
+                                .fade(duration: 0.25)
+                                .resizable()
+                                .scaledToFit()
+                                .cornerRadius(constant)
+                        }
+                    }
+                }
             }.shouldLoadMore {
                 viewModel.getData()
             }
+            .padding(constant)
         }
     }
 }
