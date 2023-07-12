@@ -10,16 +10,10 @@ import Foundation
 // MARK: - Photo
 struct Photo: Decodable, Identifiable {
     let id: String
-    let createdAt: String
-    let width: Int
-    let height: Int
-    let photoDescription: String?
     let urls: Urls
     
     enum CodingKeys: String, CodingKey {
-        case id, urls, width, height
-        case createdAt = "created_at"
-        case photoDescription = "description"
+        case urls, id
     }
 }
 
