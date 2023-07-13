@@ -20,30 +20,36 @@ struct ContentView: View {
     
     var body: some View {
         NavigationView {
-            ScrollView(.vertical, showsIndicators: false) {
-                LazyVGrid(columns: gridItems) {
-                    ForEach(viewModel.items, id: \.id) { item in
-                        NavigationLink(destination: ImageDetailView(urlString: item.urls.raw)) {
-                            KFImage.url(URL(string: item.urls.small))
-                                .loadDiskFileSynchronously()
-                                .cacheMemoryOnly()
-                                .fade(duration: 0.25)
-                                .resizable()
-                                .scaledToFit()
-                                .cornerRadius(constant)
+            
+            if viewModel.items.isEmpty {
+                ProgressView()
+                    .onAppear {
+                        viewModel.getData()
+                    }
+            } else {
+                ScrollView(.vertical, showsIndicators: false) {
+                    LazyVGrid(columns: gridItems) {
+                        ForEach(viewModel.items, id: \.id) { item in
+                            NavigationLink(destination: ImageDetailView(urlString: item.urls.raw)) {
+                                KFImage.url(URL(string: item.urls.small))
+                                    .loadDiskFileSynchronously()
+                                    .cacheMemoryOnly()
+                                    .fade(duration: 0.25)
+                                    .resizable()
+                                    .scaledToFit()
+                                    .cornerRadius(constant)
+                            }
                         }
                     }
+                }.shouldLoadMore {
+                    viewModel.getData()
                 }
-            }.shouldLoadMore {
-                viewModel.getData()
+                .padding(constant)
+                .alert(isPresented: $viewModel.hasError) {
+                    Alert(title: Text(viewModel.errorMassage))
+                }
             }
-            .padding(constant)
-            .onAppear {
-                viewModel.getData()
-            }
-            .alert(isPresented: $viewModel.hasError) {
-                Alert(title: Text(viewModel.errorMassage))
-            }
+            
         }
     }
 }
