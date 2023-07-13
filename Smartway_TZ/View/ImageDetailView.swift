@@ -10,7 +10,7 @@ import Kingfisher
 
 struct ImageDetailView: View {
     
-    var urlString: String
+    private var urlString: String
     @State private var scale: CGFloat = 1.0
     @State private var lastScale: CGFloat = 1.0
     private let minScale: CGFloat = 1.0

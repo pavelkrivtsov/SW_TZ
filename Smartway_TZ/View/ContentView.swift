@@ -7,7 +7,6 @@
 
 import SwiftUI
 import ScrollViewLoader
-import Kingfisher
 
 struct ContentView: View {
     
@@ -28,20 +27,11 @@ struct ContentView: View {
                     }
             } else {
                 ScrollView(.vertical, showsIndicators: false) {
-                    LazyVGrid(columns: gridItems) {
-                        ForEach(viewModel.items, id: \.id) { item in
-                            NavigationLink(destination: ImageDetailView(urlString: item.urls.raw)) {
-                                KFImage.url(URL(string: item.urls.small))
-                                    .loadDiskFileSynchronously()
-                                    .cacheMemoryOnly()
-                                    .fade(duration: 0.25)
-                                    .resizable()
-                                    .scaledToFit()
-                                    .cornerRadius(constant)
-                            }
-                        }
-                    }
-                }.shouldLoadMore {
+                    CustomGrid(items: viewModel.items)
+                    ProgressView()
+                        .scaleEffect(2)
+                }
+                .shouldLoadMore {
                     viewModel.getData()
                 }
                 .padding(constant)

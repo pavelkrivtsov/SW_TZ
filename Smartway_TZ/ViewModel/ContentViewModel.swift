@@ -13,7 +13,7 @@ final class ContentViewModel: ObservableObject {
     @Published var items: [Photo] = []
     @Published var hasError: Bool = false
     var errorMassage = String()
-    private var page: Int = 0
+    private var currentPage: Int = 1
     private var cancellable = Set<AnyCancellable>()
     private let networkService: NetworkServiceDelegate
     
@@ -22,8 +22,8 @@ final class ContentViewModel: ObservableObject {
     }
     
     func getData() {
-        networkService.getData(page)
-            .sink { [weak self] completion in                
+        networkService.getData(currentPage)
+            .sink { [weak self] completion in
                 switch completion {
                 case .finished:
                     print("completion")
@@ -33,7 +33,7 @@ final class ContentViewModel: ObservableObject {
                 }
             } receiveValue: { [weak self] response in
                 self?.items.append(contentsOf: response)
-                self?.page += 1
+                self?.currentPage += 1
             }
             .store(in: &cancellable)
     }
