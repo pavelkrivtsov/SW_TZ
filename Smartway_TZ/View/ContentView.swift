@@ -11,11 +11,6 @@ import ScrollViewLoader
 struct ContentView: View {
     
     @ObservedObject var viewModel: ContentViewModel
-    private let constant: CGFloat = 8
-    private let gridItems = [
-        GridItem(.flexible()),
-        GridItem(.flexible())
-    ]
     
     var body: some View {
         NavigationView {
@@ -34,7 +29,6 @@ struct ContentView: View {
                 .shouldLoadMore {
                     viewModel.getData()
                 }
-                .padding(constant)
                 .alert(isPresented: $viewModel.hasError) {
                     Alert(title: Text(viewModel.errorMassage))
                 }
