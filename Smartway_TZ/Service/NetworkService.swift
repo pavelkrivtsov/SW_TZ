@@ -46,7 +46,7 @@ extension NetworkService: NetworkServiceDelegate {
             
             guard let url = urlComponents.url,
                   let request = self.createRequest(from: url) else {
-                return promise(.failure(.networkError(description: "Invalid URL")))
+                return promise(.failure(.networkError("Invalid URL")))
             }
             
             self.session.dataTaskPublisher(for: request)
@@ -54,7 +54,7 @@ extension NetworkService: NetworkServiceDelegate {
                 .tryMap{ data, resp in
                     guard let resp = resp as? HTTPURLResponse,
                           resp.statusCode >= 200 && resp.statusCode < 300 else {
-                        throw NetworkResponse.networkError(description: "Invalid response")
+                        throw NetworkResponse.networkError("Invalid response")
                     }
                     return data
                 }
@@ -64,9 +64,9 @@ extension NetworkService: NetworkServiceDelegate {
                     if case let .failure(error) = completion {
                         switch error {
                         case _ as DecodingError:
-                            promise(.failure(.parcingError(description: "Failed to parse data")))
+                            promise(.failure(.networkError("Failed to parse data")))
                         default:
-                            promise(.failure(.networkError(description: "Not able to get data")))
+                            promise(.failure(.networkError("Not able to get data")))
                         }
                     }
                     

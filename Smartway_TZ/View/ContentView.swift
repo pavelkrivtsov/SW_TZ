@@ -23,7 +23,7 @@ struct ContentView: View {
             ScrollView(.vertical, showsIndicators: false) {
                 LazyVGrid(columns: gridItems) {
                     ForEach(viewModel.items, id: \.id) { item in
-                        NavigationLink(destination: ImageDetailView(urlString: item.urls.regular)) {
+                        NavigationLink(destination: ImageDetailView(urlString: item.urls.raw)) {
                             KFImage.url(URL(string: item.urls.small))
                                 .loadDiskFileSynchronously()
                                 .cacheMemoryOnly()
@@ -38,6 +38,12 @@ struct ContentView: View {
                 viewModel.getData()
             }
             .padding(constant)
+            .onAppear {
+                viewModel.getData()
+            }
+            .alert(isPresented: $viewModel.hasError) {
+                Alert(title: Text(viewModel.errorMassage))
+            }
         }
     }
 }

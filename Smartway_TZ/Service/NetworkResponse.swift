@@ -7,7 +7,14 @@
 
 import Foundation
 
-enum NetworkResponse: Error {
-    case networkError(description: String)
-    case parcingError(description: String)
+enum NetworkResponse: LocalizedError {
+    
+    case networkError(String)
+
+    var errorDescription: String? {
+        switch self {
+        case .networkError(let massage):
+            return NSLocalizedString(massage, comment: "")
+        }
+    }
 }

@@ -11,23 +11,25 @@ import Combine
 final class ContentViewModel: ObservableObject {
     
     @Published var items: [Photo] = []
+    @Published var hasError: Bool = false
+    var errorMassage = String()
     private var page: Int = 0
     private var cancellable = Set<AnyCancellable>()
     private let networkService: NetworkServiceDelegate
     
     init(networkService: NetworkServiceDelegate) {
         self.networkService = networkService
-        getData()
     }
     
     func getData() {
         networkService.getData(page)
-            .sink { completion in
+            .sink { [weak self] completion in                
                 switch completion {
                 case .finished:
                     print("completion")
                 case .failure(let error):
-                    print("error, \(error )")
+                    self?.hasError = true
+                    self?.errorMassage = error.localizedDescription
                 }
             } receiveValue: { [weak self] response in
                 self?.items.append(contentsOf: response)
