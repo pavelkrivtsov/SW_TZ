@@ -9,5 +9,5 @@ import Foundation
 import Combine
 
 protocol NetworkServiceDelegate {
-    func getData(_ page: Int) -> Future<[Photo], NetworkResponse>
+    func getData(_ page: Int) -> AnyPublisher<[Photo], NetworkResponse>
 }

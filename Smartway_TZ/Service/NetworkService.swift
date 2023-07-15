@@ -32,49 +32,52 @@ final class NetworkService {
 
 extension NetworkService: NetworkServiceDelegate {
     
-    func getData(_ page: Int) -> Future<[Photo], NetworkResponse> {
+    func getData(_ page: Int) -> AnyPublisher<[Photo], NetworkResponse> {
         
-        return Future { promise in
-            
-            var urlComponents = URLComponents()
-            urlComponents.scheme = "https"
-            urlComponents.host = "api.unsplash.com"
-            urlComponents.path = "/photos"
-            urlComponents.queryItems = [URLQueryItem(name: "page", value: "\(page)"),
-                                        URLQueryItem(name: "per_page", value: "30"),
-                                        URLQueryItem(name: "order_by", value: "popular")]
-            
-            guard let url = urlComponents.url,
-                  let request = self.createRequest(from: url) else {
-                return promise(.failure(.networkError("Invalid URL")))
-            }
-            
-            self.session.dataTaskPublisher(for: request)
-                .receive(on: DispatchQueue.main)
-                .tryMap{ data, resp in
-                    guard let resp = resp as? HTTPURLResponse,
-                          resp.statusCode >= 200 && resp.statusCode < 300 else {
-                        throw NetworkResponse.networkError("Invalid response")
-                    }
-                    return data
+        return Deferred {
+            return Future { promise in
+                
+                var urlComponents = URLComponents()
+                urlComponents.scheme = "https"
+                urlComponents.host = "api.unsplash.com"
+                urlComponents.path = "/photos"
+                urlComponents.queryItems = [URLQueryItem(name: "page", value: "\(page)"),
+                                            URLQueryItem(name: "per_page", value: "30"),
+                                            URLQueryItem(name: "order_by", value: "popular")]
+                
+                guard let url = urlComponents.url,
+                      let request = self.createRequest(from: url) else {
+                    return promise(.failure(.networkError("Invalid URL")))
                 }
-                .decode(type: [Photo].self, decoder: JSONDecoder())
-                .sink { completion in
-                    
-                    if case let .failure(error) = completion {
-                        switch error {
-                        case _ as DecodingError:
-                            promise(.failure(.networkError("Failed to parse data")))
-                        default:
-                            promise(.failure(.networkError("Not able to get data")))
+                
+                self.session.dataTaskPublisher(for: request)
+                    .receive(on: DispatchQueue.main)
+                    .tryMap{ data, resp in
+                        guard let resp = resp as? HTTPURLResponse,
+                              resp.statusCode >= 200 && resp.statusCode < 300 else {
+                            throw NetworkResponse.networkError("Invalid response")
                         }
+                        return data
                     }
-                    
-                } receiveValue: { response in
-                    return promise(.success(response))
-                }
-                .store(in: &self.cancellable)
-        }
+                    .decode(type: [Photo].self, decoder: JSONDecoder())
+                    .sink { completion in
+                        
+                        if case let .failure(error) = completion {
+                            switch error {
+                            case _ as DecodingError:
+                                promise(.failure(.networkError("Failed to parse data")))
+                            default:
+                                promise(.failure(.networkError("Not able to get data")))
+                            }
+                        }
+                        
+                    } receiveValue: { response in
+                        return promise(.success(response))
+                    }
+                    .store(in: &self.cancellable)
+            }
+        }.eraseToAnyPublisher()
+        
         
     }
 }
